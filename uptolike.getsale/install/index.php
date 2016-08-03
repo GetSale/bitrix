@@ -39,13 +39,17 @@ Class uptolike_getsale extends CModule
     {
         RegisterModule($this->MODULE_ID);
         RegisterModuleDependences("main", "OnPageStart", $this->MODULE_ID, "CUptolikeGetsale", "ini");
+        RegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CUptolikeGetsale", "order", "100");
+        RegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CUptolikeGetsale", "OnAfterUserRegisterHandler", "100");
         $this->InstallFiles();
         $this->InstallDB();
     }
 
     public function DoUninstall()
     {
-        UnRegisterModuleDependences('main', 'OnPageStart', self::MODULE_ID, 'CUptolikeIGetsale', 'ini');
+        UnRegisterModuleDependences('main', 'OnPageStart', self::MODULE_ID, 'CUptolikeGetsale', 'ini');
+        UnRegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CUptolikeGetsale", "order");
+        UnRegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CUptolikeGetsale", "OnAfterUserRegisterHandler");
         COption::RemoveOption(self::MODULE_ID, "getsale_id");
         COption::RemoveOption(self::MODULE_ID, "getsale_mail");
         COption::RemoveOption(self::MODULE_ID, "getsale_key");

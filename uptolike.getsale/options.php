@@ -40,7 +40,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
             }
 
             if ($is_saved) {
-                $json_result = CUptolikegetsale::userReg($_REQUEST['getsale_mail'], $_REQUEST['getsale_key']);
+                $json_result = CUptolikeGetsale::userReg($_REQUEST['getsale_mail'], $_REQUEST['getsale_key']);
                 if (isset($json_result->status)) {
                     if (($json_result->status == 'OK')) {
                         $val_getsale_id = $json_result->payload->projectId;
@@ -150,7 +150,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                     <?= GetMessage("GETSALE_TAB_TEXT2") ?> <a
                         href="http://getsale.io"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
                 <?endif; ?>
-                <?= GetMessage("GETSALE_TAB_TEXT4") ?> <a href='mailto:plugins@getsale.io'>plugins@getsale.io</a><br><br>
+                <?= GetMessage("GETSALE_TAB_TEXT4") ?> <a href='mailto:support@getsale.io'>support@getsale.io</a><br><br>
                 <?= GetMessage("GETSALE_TAB_TEXT5") ?><br><br>
             </td>
         </tr>
