@@ -143,12 +143,12 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
             <td colspan="2">
                 <? if (!empty($val_getsale_id)): ?>
                     <?= GetMessage("GETSALE_TAB_TEXT3") ?> <a
-                        href="http://getsale.io"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
+                        href="https://getsale.io" target="_blank"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
                 <? else: ?>
                     <?= GetMessage("GETSALE_TAB_TEXT1") ?> <a
-                        href="http://getsale.io"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
+                        href="https://getsale.io" target="_blank"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
                     <?= GetMessage("GETSALE_TAB_TEXT2") ?> <a
-                        href="http://getsale.io"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
+                        href="https://getsale.io" target="_blank"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
                 <?endif; ?>
                 <?= GetMessage("GETSALE_TAB_TEXT4") ?> <a href='mailto:support@getsale.io'>support@getsale.io</a><br><br>
                 <?= GetMessage("GETSALE_TAB_TEXT5") ?><br><br>

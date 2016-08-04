@@ -20,7 +20,7 @@ $MESS["GETSALE_TAB_MESS_2"] = "Введите ваш ключ API";
 
 $MESS["GETSALE_TAB_MESS_3"] = "Введен неверный ключ! Убедитесь что вы скопировали ключ без лишних символов (пробелов и т.д.)";
 $MESS["GETSALE_TAB_MESS_4"] = "Невозможно создать проект. Возможно, он уже создан.";
-$MESS["GETSALE_TAB_MESS_5"] = "Данный email не зарегистрирован на сайте http://getSale.io";
+$MESS["GETSALE_TAB_MESS_5"] = "Данный email не зарегистрирован на сайте https://getSale.io";
 $MESS["GETSALE_TAB_MESS_6"] = "Неверный формат данных.";
 $MESS["GETSALE_TAB_MESS_7"] = "Ответ от сервера GetSale не получен. Попробуйсте, пожалуйста, позднее.";
 

@@ -188,7 +188,7 @@ Class CUptolikeGetsale {
         $jsondata = json_encode(array('email' => $email, 'key' => $key, 'url' => CUptolikeGetsale::GetCurrUrl(), 'cms' => 'bitrix'));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
-        curl_setopt($ch, CURLOPT_URL, "http://edge.getsale.io/api/registration.json");
+        curl_setopt($ch, CURLOPT_URL, "https://getsale.io/api/registration.json");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsondata);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -236,7 +236,7 @@ Class CUptolikeGetsale {
                       f = function () { n.parentNode.insertBefore(s, n); };
                       s.type = 'text/javascript';
                       s.async = true;
-                      s.src = '//rt.edge.getsale.io/loader.js';
+                      s.src = '//rt.getsale.io/loader.js';
                       if (w.opera == '[object Opera]') {
                           d.addEventListener('DOMContentLoaded', f, false);
                       } else { f(); }
