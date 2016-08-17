@@ -20,7 +20,7 @@ $MESS["GETSALE_TAB_MESS_2"] = "Введите ваш ключ API";
 
 $MESS["GETSALE_TAB_MESS_3"] = "Введен неверный ключ! Убедитесь что вы скопировали ключ без лишних символов (пробелов и т.д.)";
 $MESS["GETSALE_TAB_MESS_4"] = "Невозможно создать проект. Возможно, он уже создан.";
-$MESS["GETSALE_TAB_MESS_5"] = "Данный email не зарегистрирован на сайте https://getSale.io";
+$MESS["GETSALE_TAB_MESS_5"] = "Данный Email не зарегистрирован на сайте https://getSale.io";
 $MESS["GETSALE_TAB_MESS_6"] = "Неверный формат данных.";
 $MESS["GETSALE_TAB_MESS_7"] = "Ответ от сервера GetSale не получен. Попробуйсте, пожалуйста, позднее.";
 
@@ -31,7 +31,7 @@ $MESS["GETSALE_ID_SUCCESS"] = "Поздравляем, сайт успешно привязан к аккаунту Get
 $MESS["GETSALE_TAB_MAIL_ILLEGAL_ARGUMENTS"] = "<span style='color:red;'>Email пустой или указан неверно.</span>";
 $MESS["GETSALE_TAB_MAIL_ALREADY_EXISTS"] = "<span style='color:red;'>Пользователь с таким email уже зарегистрирован, обратитесь в службу поддержки: <a href='mailto:support@getsale.io'>support@getsale.io</a></span>";
 
-$MESS["GETSALE_TAB_TEXT1"] = "Введите email и ключ API из личного кабинета";
+$MESS["GETSALE_TAB_TEXT1"] = "Введите Email и ключ API из личного кабинета";
 $MESS["GETSALE_TAB_TEXT2"] = "Если вы ещё не зарегистрировались в сервисе GetSale это можно сделать по ссылке";
 $MESS["GETSALE_TAB_TEXT3"] = "Войдите в личный кабинет для просмотра статистики";
 $MESS["GETSALE_TAB_TEXT4"] = "Служба технической поддержки:";
