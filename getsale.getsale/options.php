@@ -6,7 +6,7 @@ if (!$USER->IsAdmin()) {
     return;
 }
 
-define('ADMIN_MODULE_NAME', 'uptolike.getsale');
+define('ADMIN_MODULE_NAME', 'getsale.getsale');
 
 
 if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
@@ -40,12 +40,12 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
             }
 
             if ($is_saved) {
-                $json_result = CUptolikeGetsale::userReg($_REQUEST['getsale_mail'], $_REQUEST['getsale_key']);
+                $json_result = CGetsaleGetsale::userReg($_REQUEST['getsale_mail'], $_REQUEST['getsale_key']);
                 if (isset($json_result->status)) {
                     if (($json_result->status == 'OK')) {
                         $val_getsale_id = $json_result->payload->projectId;
                         COption::SetOptionString(ADMIN_MODULE_NAME, 'getsale_id', $json_result->payload->projectId, '');
-                        $val_getsale_code = CUptolikeGetsale::jsCode($val_getsale_id);
+                        $val_getsale_code = CGetsaleGetsale::jsCode($val_getsale_id);
                         COption::SetOptionString(ADMIN_MODULE_NAME, 'getsale_code', htmlspecialchars($val_getsale_code), '');
                         CAdminMessage::ShowMessage(array("MESSAGE" => Loc::getMessage('GETSALE_ID_SUCCESS'), "TYPE" => "OK"));
                     } elseif ($json_result->status == 'error') {
@@ -115,7 +115,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                 <? if (!empty($val_getsale_id)): ?>
                     <div
                         style="background-image: url('../images/<?= ADMIN_MODULE_NAME ?>/ok.png');width: 16px;height: 16px;margin: -4px -22px;display: inline-block;"></div>
-                <?endif; ?>
+                <? endif; ?>
             </td>
         </tr>
 
@@ -128,7 +128,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                 <? if (!empty($val_getsale_id)): ?>
                     <div
                         style="background-image: url('../images/<?= ADMIN_MODULE_NAME ?>/ok.png');width: 16px;height: 16px;margin: -4px -22px;display: inline-block;"></div>
-                <?endif; ?>
+                <? endif; ?>
             </td>
         </tr>
 
@@ -149,8 +149,9 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                         href="https://getsale.io" target="_blank"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
                     <?= GetMessage("GETSALE_TAB_TEXT2") ?> <a
                         href="https://getsale.io" target="_blank"><?= GetMessage("GETSALE_TITLE") ?></a><br><br>
-                <?endif; ?>
-                <?= GetMessage("GETSALE_TAB_TEXT4") ?> <a href='mailto:support@getsale.io'>support@getsale.io</a><br><br>
+                <? endif; ?>
+                <?= GetMessage("GETSALE_TAB_TEXT4") ?> <a
+                    href='mailto:support@getsale.io'>support@getsale.io</a><br><br>
                 <?= GetMessage("GETSALE_TAB_TEXT5") ?><br><br>
             </td>
         </tr>
@@ -163,7 +164,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                    OnClick="return confirm('<?= AddSlashes(GetMessage("MAIN_HINT_RESTORE_DEFAULTS_WARNING")) ?>')"
                    value="<?= GetMessage("MAIN_RESTORE_DEFAULTS") ?>">
             <?= bitrix_sessid_post(); ?>
-        <?endif; ?>
+        <? endif; ?>
         <? $tabControl->End(); ?>
 
     </form>
@@ -177,7 +178,5 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
         }
     </style>
     <?php
-
 }
-
 ?>

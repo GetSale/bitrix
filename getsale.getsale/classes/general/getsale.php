@@ -2,12 +2,12 @@
 IncludeModuleLangFile(__FILE__);
 use Bitrix\Main\Page\Asset;
 
-Class CUptolikeGetsale {
+Class CGetsaleGetsale {
     function ini() {
         if (defined('ADMIN_SECTION')) return;
 
         global $APPLICATION;
-        $js_code = COption::GetOptionString("uptolike.getsale", "getsale_code");
+        $js_code = COption::GetOptionString("getsale.getsale", "getsale_code");
         $js_code = htmlspecialcharsBack($js_code);
 
         if (!empty($js_code)) {
@@ -160,7 +160,7 @@ Class CUptolikeGetsale {
         $filter = Array("EMAIL" => $arOrder['USER_EMAIL']);
         $rsUsers = CUser::GetList(($by = "id"), ($order = "desc"), $filter);
         $res = $rsUsers->Fetch();
-        $getsale_id = COption::GetOptionString("uptolike.getsale", "getsale_id");
+        $getsale_id = COption::GetOptionString("getsale.getsale", "getsale_id");
 
         if (!$getsale_id) return;
         global $APPLICATION;
@@ -174,7 +174,7 @@ Class CUptolikeGetsale {
 
     //цель регистрация пользователя
     function OnAfterUserRegisterHandler(&$arFields) {
-        $getsale_id = COption::GetOptionString("uptolike.getsale", "getsale_id");
+        $getsale_id = COption::GetOptionString("getsale.getsale", "getsale_id");
 
         if (!$getsale_id) return;
 
@@ -185,7 +185,7 @@ Class CUptolikeGetsale {
     static public function userReg($email, $key) {
         $ch = curl_init();
 
-        $jsondata = json_encode(array('email' => $email, 'key' => $key, 'url' => CUptolikeGetsale::GetCurrUrl(), 'cms' => 'bitrix'));
+        $jsondata = json_encode(array('email' => $email, 'key' => $key, 'url' => CGetsaleGetsale::GetCurrUrl(), 'cms' => 'bitrix'));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
         curl_setopt($ch, CURLOPT_URL, "https://getsale.io/api/registration.json");

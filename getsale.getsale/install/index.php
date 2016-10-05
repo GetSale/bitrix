@@ -1,10 +1,10 @@
 <?
 IncludeModuleLangFile(__FILE__);
 
-Class uptolike_getsale extends CModule
+Class getsale_getsale extends CModule
 {
-    const MODULE_ID = 'uptolike.getsale';
-    var $MODULE_ID = 'uptolike.getsale';
+    const MODULE_ID = 'getsale.getsale';
+    var $MODULE_ID = 'getsale.getsale';
     var $MODULE_VERSION;
     var $MODULE_VERSION_DATE;
     var $MODULE_NAME;
@@ -18,11 +18,11 @@ Class uptolike_getsale extends CModule
         include(dirname(__FILE__) . "/version.php");
         $this->MODULE_VERSION = $arModuleVersion["VERSION"];
         $this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
-        $this->MODULE_NAME = GetMessage("uptolike.getsale_MODULE_NAME");
-        $this->MODULE_DESCRIPTION = GetMessage("uptolike.getsale_MODULE_DESC");
+        $this->MODULE_NAME = GetMessage("getsale.getsale_MODULE_NAME");
+        $this->MODULE_DESCRIPTION = GetMessage("getsale.getsale_MODULE_DESC");
 
-        $this->PARTNER_NAME = GetMessage("uptolike.getsale_PARTNER_NAME");
-        $this->PARTNER_URI = GetMessage("uptolike.getsale_PARTNER_URI");
+        $this->PARTNER_NAME = GetMessage("getsale.getsale_PARTNER_NAME");
+        $this->PARTNER_URI = GetMessage("getsale.getsale_PARTNER_URI");
     }
 
     function InstallEvents()
@@ -38,18 +38,18 @@ Class uptolike_getsale extends CModule
     public function DoInstall()
     {
         RegisterModule($this->MODULE_ID);
-        RegisterModuleDependences("main", "OnPageStart", $this->MODULE_ID, "CUptolikeGetsale", "ini");
-        RegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CUptolikeGetsale", "order", "100");
-        RegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CUptolikeGetsale", "OnAfterUserRegisterHandler", "100");
+        RegisterModuleDependences("main", "OnPageStart", $this->MODULE_ID, "CGetsaleGetsale", "ini");
+        RegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CGetsaleGetsale", "order", "100");
+        RegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CGetsaleGetsale", "OnAfterUserRegisterHandler", "100");
         $this->InstallFiles();
         $this->InstallDB();
     }
 
     public function DoUninstall()
     {
-        UnRegisterModuleDependences('main', 'OnPageStart', self::MODULE_ID, 'CUptolikeGetsale', 'ini');
-        UnRegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CUptolikeGetsale", "order");
-        UnRegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CUptolikeGetsale", "OnAfterUserRegisterHandler");
+        UnRegisterModuleDependences('main', 'OnPageStart', self::MODULE_ID, 'CGetsaleGetsale', 'ini');
+        UnRegisterModuleDependences("sale", "OnBasketOrder", $this->MODULE_ID, "CGetsaleGetsale", "order");
+        UnRegisterModuleDependences("main", "OnAfterUserRegister", $this->MODULE_ID, "CGetsaleGetsale", "OnAfterUserRegisterHandler");
         COption::RemoveOption(self::MODULE_ID, "getsale_id");
         COption::RemoveOption(self::MODULE_ID, "getsale_mail");
         COption::RemoveOption(self::MODULE_ID, "getsale_key");
