@@ -4,7 +4,8 @@ use Bitrix\Main\Page\Asset;
 
 Class CGetsaleGetsale {
     function ini() {
-        if (defined('ADMIN_SECTION')) return;
+        if (defined('ADMIN_SECTION'))
+            return;
 
         global $APPLICATION;
         $js_code = COption::GetOptionString("getsale.getsale", "getsale_code");
@@ -162,7 +163,8 @@ Class CGetsaleGetsale {
         $res = $rsUsers->Fetch();
         $getsale_id = COption::GetOptionString("getsale.getsale", "getsale_id");
 
-        if (!$getsale_id) return;
+        if (!$getsale_id)
+            return;
         global $APPLICATION;
         $APPLICATION->set_cookie("GETSALE_ORDER_SUCCESS", "Y", time() + 60);
 
@@ -176,7 +178,8 @@ Class CGetsaleGetsale {
     function OnAfterUserRegisterHandler(&$arFields) {
         $getsale_id = COption::GetOptionString("getsale.getsale", "getsale_id");
 
-        if (!$getsale_id) return;
+        if (!$getsale_id)
+            return;
 
         global $APPLICATION;
         $APPLICATION->set_cookie("GETSALE_REG_SUCCESS", "Y", time() + 60);
@@ -185,7 +188,11 @@ Class CGetsaleGetsale {
     static public function userReg($email, $key) {
         $ch = curl_init();
 
-        $jsondata = json_encode(array('email' => $email, 'key' => $key, 'url' => CGetsaleGetsale::GetCurrUrl(), 'cms' => 'bitrix'));
+        $jsondata = json_encode(array(
+            'email' => $email,
+            'key' => $key,
+            'url' => CGetsaleGetsale::GetCurrUrl(),
+            'cms' => 'bitrix'));
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Accept: application/json'));
         curl_setopt($ch, CURLOPT_URL, "https://getsale.io/api/registration.json");
@@ -207,42 +214,30 @@ Class CGetsaleGetsale {
 
     static public function GetCurrUrl() {
         $result = '';
-        $default_port = 80;
-
-        if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) {
-            $result .= 'https://';
-            $default_port = 443;
-        } else {
-            $result .= 'http://';
-        }
-
-        $result .= $_SERVER['SERVER_NAME'];
-
-        if ($_SERVER['SERVER_PORT'] != $default_port) {
-            $result .= ':' . $_SERVER['SERVER_PORT'];
-        }
+        $result .= (CMain::IsHTTPS()) ? "https://" : "http://";
+        $result .= (SITE_SERVER_NAME) ? SITE_SERVER_NAME : $_SERVER['SERVER_NAME'];
         return $result;
     }
 
     static public function jsCode($id) {
-        $jscode = "<!-- GETSALE CODE -->
-                <script type='text/javascript'>
-                    (function(d, w, c) {
-                      w[c] = {
-                        projectId:" . $id . "
-                      };
-                      var n = d.getElementsByTagName('script')[0],
-                      s = d.createElement('script'),
-                      f = function () { n.parentNode.insertBefore(s, n); };
-                      s.type = 'text/javascript';
-                      s.async = true;
-                      s.src = '//rt.getsale.io/loader.js';
-                      if (w.opera == '[object Opera]') {
-                          d.addEventListener('DOMContentLoaded', f, false);
-                      } else { f(); }
-                    })(document, window, 'getSaleInit');
-                </script>
-                <!-- /GETSALE CODE -->";
-        return $jscode;
+        $getsale_code = <<<PHP_EOL
+            <script type='text/javascript'>
+                (function(d, w, c) {
+                w[c] = {
+                    projectId: $id
+                };
+                var n = d.getElementsByTagName('script')[0],
+                s = d.createElement('script'),
+                f = function () {n.parentNode.insertBefore(s, n); };
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//rt.getsale.io/loader.js';
+                if (w.opera == '[object Opera]') {
+                    d.addEventListener('DOMContentLoaded', f, false);
+                } else { f(); }
+                })(document, window, 'getSaleInit');
+            </script>
+PHP_EOL;
+        return $getsale_code;
     }
 }

@@ -45,7 +45,7 @@ if ($APPLICATION->GetGroupRight(ADMIN_MODULE_NAME) >= 'R') {
                     if (($json_result->status == 'OK')) {
                         $val_getsale_id = $json_result->payload->projectId;
                         COption::SetOptionString(ADMIN_MODULE_NAME, 'getsale_id', $json_result->payload->projectId, '');
-                        $val_getsale_code = CGetsaleGetsale::jsCode($val_getsale_id);
+                        $val_getsale_code = CGetsaleGetsale::jsCode(intval($val_getsale_id));
                         COption::SetOptionString(ADMIN_MODULE_NAME, 'getsale_code', htmlspecialchars($val_getsale_code), '');
                         CAdminMessage::ShowMessage(array("MESSAGE" => Loc::getMessage('GETSALE_ID_SUCCESS'), "TYPE" => "OK"));
                     } elseif ($json_result->status == 'error') {
