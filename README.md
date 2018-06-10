@@ -1,8 +1,8 @@
 # GetSale
 Tags: getsale, popup, popups  
 Requires at least: 11.0.0  
-Tested up to: 16.0.11  
-Stable tag: 1.0.1  
+Tested up to: 17.5.10  
+Stable tag: 1.0.3  
 License: GNU General Public License, version 3  
 
 **GetSale** &mdash; профессиональный инструмент для создания popup-окон.
@@ -88,7 +88,13 @@ GetSale поможет вашему сайту нарастить контакт
 - **ключ API:** необходимо указать ключ API, полученный в ЛК [GetSale](https://getsale.io).
 
 ## Изменения
-#### 1.0.0
+#### 1.0.3
+ * Улучшена совместимость с модулями 1C Bitrix. Исправлены конфликты переменных.
+ 
+#### 1.0.2
+ * Небольшие исправления в коде плагина
+ 
+#### 1.0.1
  * Кооректное получения url сайта с протоколом https
  * Корректный вывод главного скрипта GetSale
  
